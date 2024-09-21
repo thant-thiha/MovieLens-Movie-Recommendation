@@ -1,9 +1,10 @@
 ---
-title: 'MovieLens Movie Recommendation System: HarvardX Data Science Capstone Project'
+title: 'MovieLens Movie Recommendation System: 
+HarvardX Data Science Capstone Project'
 author: "Thant Thiha"
 date: "2024-09-21"
 output:
-  pdf_document
+  pdf_document:
 ---
 
 ## Introduction
@@ -16,7 +17,7 @@ Key steps are
 3. Model Development and,
 4. Final Model Evaluation.
 
-## 1. Data Understanding and Preparation
+## 1. Data Preparation
 
 This section describes the data preparation process, including downloading the `MovieLens` dataset, merging movie and rating information, and splitting the data into **training** `edx` (90%) and **evaluation** `final_holdout_test` (10%) sets.
 
@@ -94,6 +95,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 In this section, let's explore the data to understand the **distribution of ratings**, **the number of unique users and movies**, and other key characteristics of the dataset.
 
+
 ```{r eda, fig.align = 'center'}
 # Check the structure of the edx dataset
 str(edx)
@@ -118,9 +120,11 @@ edx %>%
 
 This section involves building multiple models to progressively improve the prediction accuracy. We will start with a baseline model and incrementally add complexity with regularization by using movie and user effects.
 
+
 ### 3.1. Baseline Model - Global Average
 
 This simple model predicts the average rating for all movies.
+
 
 ``` {r baseline-model}
 
@@ -137,6 +141,7 @@ cat("RMSE Global Average Rating:", rmse_global_avg, "\n")
 ### 3.2. Movie Effect Model
 
 This model adjusts predictions by incorporating the specific effect of each movie.
+
 
 ```{r movie-effect-model}
 
@@ -161,6 +166,7 @@ cat("RMSE of Movie Effect Model:", rmse_movie_effect, "\n")
 ### 3.3. Regularized User and Movie Effect Model
 
 To avoid overfitting, we apply regularization to movie and user effects.
+
 
 ``` {r user-movie-effect-model}
 
@@ -194,6 +200,7 @@ cat("RMSE of Regularized Movie + User Effect Model:", rmse_final_model, "\n")
 ## 4. Final Model Evaluation
 
 Evaluate the selected model on the `final_holdout_test` set to obtain the final RMSE.
+
 
 ```{r final-holdout-model}
 
